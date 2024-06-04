@@ -1,4 +1,5 @@
-abstract class FailureSearch implements Exception{
-}
+abstract class FailureSearch implements Exception {}
 
-class InvalidResponseFailure extends FailureSearch{}
+class InvalidResponseFailure extends FailureSearch {}
+
+class DataSourceFailure extends FailureSearch {}
