@@ -16,7 +16,7 @@ class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
   Future<Either<FailureSearch, List<CharactersEntity>>> call() async {
     try {
       return await repository.search();
-    } on Exception catch (e) {
+    } on Exception {
       return Left(InvalidResponseFailure());
     }
   }
