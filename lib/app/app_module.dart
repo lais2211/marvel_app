@@ -1,5 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:marvel_app/app/core/config/http_client.dart';
+import 'package:marvel_app/app/modules/marvel_characters/presenter/controllers/home_page_controller.dart';
 
 import 'modules/marvel_characters/domain/repositories/search_characters_repository.dart';
 import 'modules/marvel_characters/domain/usecases/search_characters_usecase.dart';
@@ -11,10 +12,11 @@ import 'modules/marvel_characters/presenter/pages/home_page.dart';
 class AppModule extends Module {
   @override
   void binds(i) {
-    i.add(Dio.new);
+    i.add(() => registerDio());
     i.add<SearchCharactersDatasource>(MarvelCharactersDatasourceImpl.new);
     i.add<SearchCharactersRepository>(SearchCharactersRepositoryImpl.new);
     i.add<SearchCharactersUsecase>(SearchCharactersUsecaseImpl.new);
+    i.add<HomePageController>(HomePageController.new);
   }
 
   @override
