@@ -4,7 +4,8 @@ import 'package:marvel_app/app/modules/marvel_characters/domain/entities/charact
 import 'package:marvel_app/app/modules/marvel_characters/domain/repositories/search_characters_repository.dart';
 
 abstract class SearchCharactersUsecase {
-  Future<Either<FailureSearch, List<CharactersEntity>>> call();
+  Future<Either<FailureSearch, List<CharactersEntity>>> call(
+      {int? comicId, int? offset});
 }
 
 class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
@@ -13,7 +14,8 @@ class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
   SearchCharactersUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<FailureSearch, List<CharactersEntity>>> call() async {
+  Future<Either<FailureSearch, List<CharactersEntity>>> call(
+      {int? comicId, int? offset}) async {
     try {
       return await repository.search();
     } on Exception {
