@@ -14,7 +14,7 @@ class ResultCharactersModel extends CharactersEntity {
         name: map['name'],
         description: map['description'],
         thumbnail:
-            '${map['thumbnail']?['path']}.${map['thumbnail']?['extension']} ');
+            '${map['thumbnail']?['path']}.${map['thumbnail']?['extension']}');
   }
 
   Map<String, dynamic> toMap() {

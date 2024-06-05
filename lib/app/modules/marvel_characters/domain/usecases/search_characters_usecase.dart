@@ -17,7 +17,7 @@ class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
   Future<Either<FailureSearch, List<CharactersEntity>>> call(
       {int? comicId, int? offset}) async {
     try {
-      return await repository.search();
+      return await repository.search(comicId: comicId, offset: offset);
     } on Exception {
       return Left(InvalidResponseFailure());
     }
