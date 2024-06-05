@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import '../../domain/entities/characters_entity.dart';
-import '../../domain/entities/thumbnail_entity.dart';
 
 class ResultCharactersModel extends CharactersEntity {
   ResultCharactersModel({
@@ -13,14 +10,11 @@ class ResultCharactersModel extends CharactersEntity {
 
   factory ResultCharactersModel.fromMap(Map<String, dynamic> map) {
     return ResultCharactersModel(
-      id: map['id'],
-      name: map['name'],
-      description: map['description'],
-      thumbnail: ThumbnailEntity(
-        imageUrl: map['thumbnail']['path'],
-        extension: map['thumbnail']['extension'],
-      ),
-    );
+        id: map['id'],
+        name: map['name'],
+        description: map['description'],
+        thumbnail:
+            '${map['thumbnail']?['path']}.${map['thumbnail']?['extension']} ');
   }
 
   Map<String, dynamic> toMap() {
@@ -28,19 +22,7 @@ class ResultCharactersModel extends CharactersEntity {
       'id': id,
       'name': name,
       'description': description,
-      'thumbnail': {
-        'path': thumbnail.imageUrl,
-        'extension': thumbnail.extension,
-      },
+      'thumbnail': thumbnail
     };
-  }
-
-  factory ResultCharactersModel.fromJson(String json) {
-    Map<String, dynamic> data = jsonDecode(json);
-    return ResultCharactersModel.fromMap(data);
-  }
-
-  String toJson() {
-    return jsonEncode(toMap());
   }
 }
