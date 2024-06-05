@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
 import 'package:marvel_app/app/modules/marvel_characters/domain/entities/characters_entity.dart';
-import 'package:marvel_app/app/modules/marvel_characters/domain/entities/thumbnail_entity.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/datasource/search_characters_datasource.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_characters_model.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/repositories/search_characters_repository_impl.dart';
@@ -21,10 +20,7 @@ void main() {
       ResultCharactersModel(
         id: 1,
         name: 'Test Character',
-        thumbnail: const ThumbnailEntity(
-          imageUrl: 'https://example.com/image',
-          extension: 'jpg',
-        ),
+        thumbnail: 'test.com',
         description: '',
       ),
     ];
