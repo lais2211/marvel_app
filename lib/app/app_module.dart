@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:marvel_app/app/core/config/http_client.dart';
+import 'package:marvel_app/app/core/config/register_dio.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/controllers/home_page_controller.dart';
 
 import 'modules/marvel_characters/domain/repositories/search_characters_repository.dart';
