@@ -28,7 +28,7 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
       }
 
       final response = await dio.get(
-        '${ConfigEnv.basePath}${ConfigEnv.charactersPath}',
+        ConfigEnv.charactersPath,
         queryParameters: queryParams,
       );
 

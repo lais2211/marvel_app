@@ -16,7 +16,8 @@ class SearchCharactersRepositoryImpl implements SearchCharactersRepository {
   Future<Either<FailureSearch, List<CharactersEntity>>> search(
       {int? comicId, int? offset}) async {
     try {
-      final result = await datasource.getCharacters();
+      final result =
+          await datasource.getCharacters(comicId: comicId, offset: offset);
       return Right(result);
     } on Exception {
       return Left(DataSourceFailure());
