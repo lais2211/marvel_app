@@ -11,16 +11,27 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
   MarvelCharactersDatasourceImpl({required this.dio});
 
   @override
-  Future<List<ResultCharactersModel>> getCharacters() async {
+  Future<List<ResultCharactersModel>> getCharacters(
+      {int? comicId, int? offset}) async {
     try {
+      final queryParams = {
+        'apikey': ConfigEnv.apiKey,
+        'hash': ConfigEnv.hash,
+        'ts': 1,
+      };
+
+      if (comicId != null) {
+        queryParams['comics'] = comicId;
+      }
+      if (offset != null) {
+        queryParams['offset'] = offset;
+      }
+
       final response = await dio.get(
         '${ConfigEnv.basePath}${ConfigEnv.charactersPath}',
-        queryParameters: {
-          'apikey': ConfigEnv.apiKey,
-          'hash': ConfigEnv.hash,
-          'ts': 1,
-        },
+        queryParameters: queryParams,
       );
+
       if (response.statusCode == 200) {
         List<ResultCharactersModel> characterList = [];
 

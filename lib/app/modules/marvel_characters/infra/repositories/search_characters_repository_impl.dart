@@ -13,7 +13,8 @@ class SearchCharactersRepositoryImpl implements SearchCharactersRepository {
   SearchCharactersRepositoryImpl({required this.datasource});
 
   @override
-  Future<Either<FailureSearch, List<CharactersEntity>>> search() async {
+  Future<Either<FailureSearch, List<CharactersEntity>>> search(
+      {int? comicId, int? offset}) async {
     try {
       final result = await datasource.getCharacters();
       return Right(result);
