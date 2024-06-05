@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:marvel_app/app/core/config/config_env.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
@@ -9,9 +10,10 @@ import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements Dio {}
 
-void main() {
+void main() async {
   final dio = DioMock();
   final datasource = MarvelCharactersDatasourceImpl(dio: dio);
+  await dotenv.load(fileName: ".env");
 
   test('should return a list of characters', () async {
     // Arrange
