@@ -64,10 +64,12 @@ dev_dependencies:
 flutter:
   assets:
     - .env
-    - lib/assets/images/background1.png
-    - lib/assets/images/background2.png
-    - lib/assets/images/logo.png
-    - lib/assets/images/nametag.png
+    - assets/images/background1.png
+    - assets/images/background2.png
+    - assets/images/background3.jpg
+    - assets/images/logo.png
+    - assets/images/nametag.png
+    - assets/images/splashPage.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

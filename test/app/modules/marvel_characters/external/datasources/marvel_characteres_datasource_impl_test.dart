@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:marvel_app/app/core/config/config_env.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
-import 'package:marvel_app/app/core/mocks/mock_config_env.dart';
+import 'package:marvel_app/app/modules/marvel_characters/external/mocks/datasource_marvel_characters_mock.dart';
 import 'package:marvel_app/app/modules/marvel_characters/external/datasources/marvel_characters_datasource_impl.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_characters_model.dart';
 import 'package:mocktail/mocktail.dart';
@@ -25,7 +25,7 @@ void main() async {
             'ts': 1,
           },
         )).thenAnswer((_) async => Response<Map<String, dynamic>>(
-          data: MockConfigEnv.marvelCharactersResult,
+          data: DatasourceMarvelCharactersMock.marvelCharactersResult,
           requestOptions: RequestOptions(),
           statusCode: 200,
         ));
