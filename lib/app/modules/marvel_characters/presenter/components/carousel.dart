@@ -30,18 +30,17 @@ class Carousel extends StatelessWidget {
                 itemBuilder: (context, itemIndex, pageViewIndex) {
                   final actualCharacter = charactersList[itemIndex];
 
-                  return GestureDetector(
-                    onTap: () {},
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: SizedBox(
-                          height: carouselHeight,
-                          width: carouselWidth,
-                          child: CharacterCard(
-                            imageUrl: actualCharacter.thumbnail,
-                            name: actualCharacter.name,
-                          )),
-                    ),
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: SizedBox(
+                        height: carouselHeight,
+                        width: carouselWidth,
+                        child: CharacterCard(
+                          imageUrl: actualCharacter.thumbnail,
+                          name: actualCharacter.name,
+                          imageFlex: 5,
+                          textFlex: 2,
+                        )),
                   );
                 },
                 options: CarouselOptions(
