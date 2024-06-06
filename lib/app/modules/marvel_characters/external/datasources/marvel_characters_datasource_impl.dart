@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/datasource/search_characters_datasource.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_characters_model.dart';
@@ -6,9 +7,10 @@ import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_cha
 import '../../../../core/config/config_env.dart';
 
 class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
-  final Dio dio;
+  Dio dio;
+  Logger logger;
 
-  MarvelCharactersDatasourceImpl({required this.dio});
+  MarvelCharactersDatasourceImpl({required this.dio, required this.logger});
 
   @override
   Future<List<ResultCharactersModel>> getCharacters(
@@ -33,6 +35,8 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
       );
 
       if (response.statusCode == 200) {
+        logger.d('O if da função getCharacters da external foi validado.');
+        logger.d('Os query params são : $queryParams');
         List<ResultCharactersModel> characterList = [];
 
         List results = response.data['data']['results'];
@@ -42,9 +46,11 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
 
         return characterList;
       } else {
+        logger.e('Ocorreu um erro: $DataSourceFailure');
         throw DataSourceFailure();
       }
     } catch (e) {
+      logger.e('Ocorreu um erro: $DataSourceFailure');
       throw DataSourceFailure();
     }
   }

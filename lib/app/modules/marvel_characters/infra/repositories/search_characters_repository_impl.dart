@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:logger/logger.dart';
 
 import 'package:marvel_app/app/core/errors/errors.dart';
 
@@ -9,12 +11,15 @@ import '../../domain/repositories/search_characters_repository.dart';
 
 class SearchCharactersRepositoryImpl implements SearchCharactersRepository {
   final SearchCharactersDatasource datasource;
+  Logger logger;
 
-  SearchCharactersRepositoryImpl({required this.datasource});
+  SearchCharactersRepositoryImpl(
+      {required this.datasource, required this.logger});
 
   @override
   Future<Either<FailureSearch, List<CharactersEntity>>> search(
       {int? comicId, int? offset}) async {
+    logger.d('Inicio do repository na infra.');
     try {
       final result =
           await datasource.getCharacters(comicId: comicId, offset: offset);
