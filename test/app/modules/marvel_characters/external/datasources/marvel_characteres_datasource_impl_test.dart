@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:logger/logger.dart';
 import 'package:marvel_app/app/core/config/config_env.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
 import 'package:marvel_app/app/modules/marvel_characters/external/mocks/datasource_marvel_characters_mock.dart';
@@ -10,15 +11,18 @@ import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements Dio {}
 
+class LoggerMock extends Mock implements Logger {}
+
 void main() async {
   final dio = DioMock();
-  final datasource = MarvelCharactersDatasourceImpl(dio: dio);
+  final logger = LoggerMock();
+  final datasource = MarvelCharactersDatasourceImpl(dio: dio, logger: logger);
   await dotenv.load(fileName: ".env");
 
   test('should return a list of characters', () async {
     // Arrange
     when(() => dio.get(
-          '${ConfigEnv.basePath}${ConfigEnv.charactersPath}',
+          ConfigEnv.charactersPath,
           queryParameters: {
             'apikey': ConfigEnv.apiKey,
             'hash': ConfigEnv.hash,
@@ -41,7 +45,7 @@ void main() async {
   test('should return an error when fetching characters', () async {
     // Arrange
     when(() => dio.get(
-          '${ConfigEnv.basePath}${ConfigEnv.charactersPath}',
+          ConfigEnv.charactersPath,
           queryParameters: {
             'apikey': ConfigEnv.apiKey,
             'hash': ConfigEnv.hash,

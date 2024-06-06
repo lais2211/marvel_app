@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:logger/logger.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/components/app_bar_background.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/components/characters_list.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/controllers/home_page_controller.dart';
@@ -17,12 +18,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomePageController controller = Modular.get();
+  Logger logger = Modular.get();
   MarvelCharactersText text = MarvelCharactersText();
   final ScrollController _scrollController = ScrollController();
 
   void infiniteScrollListener() {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
+      logger.d('O if da função infiniteScrollListener foi validado.');
       controller.loadCharacters(controller.offset);
       controller.offset += 20;
     }
@@ -31,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    logger.i('Home Page foi iniciada.');
     _scrollController.addListener(() => infiniteScrollListener());
   }
 
