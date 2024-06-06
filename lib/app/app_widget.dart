@@ -11,6 +11,5 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData.dark(),
       routerConfig: Modular.routerConfig,
     );
-    ;
   }
 }

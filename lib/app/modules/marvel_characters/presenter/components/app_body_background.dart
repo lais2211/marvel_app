@@ -18,17 +18,17 @@ class AppBodyBackground extends StatelessWidget {
           children: [
             Positioned.fill(
               child: Image.asset(
-                'lib/assets/images/background2.png',
+                'assets/images/background2.png',
                 fit: BoxFit.cover,
               ),
             ),
             Column(
               children: [
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Carousel(
                   charactersList: charactersList,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
               ],
             ),
           ],

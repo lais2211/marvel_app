@@ -12,12 +12,17 @@ abstract class _HomePageControllerBase with Store {
   _HomePageControllerBase(this.usecase);
 
   @observable
+  bool isLoading = false;
+
+  @observable
   ObservableList<CharactersEntity> charactersList =
       ObservableList<CharactersEntity>();
 
   @observable
   ObservableList<CharactersEntity> charactersListScroll =
       ObservableList<CharactersEntity>();
+
+  int offset = 20;
 
   @action
   Future<void> getCharactersByComicId(int comicId, int offset) async {
@@ -43,5 +48,12 @@ abstract class _HomePageControllerBase with Store {
         return ObservableList.of(charactersListScroll);
       },
     );
+  }
+
+  @action
+  Future<void> loadCharacters(int offset) async {
+    isLoading = true;
+    await getCharacters(offset);
+    isLoading = false;
   }
 }
