@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:logger/logger.dart';
 
 import 'package:marvel_app/app/core/errors/errors.dart';
