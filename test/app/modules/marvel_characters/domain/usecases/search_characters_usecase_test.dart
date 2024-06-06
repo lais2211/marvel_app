@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:logger/logger.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
 import 'package:marvel_app/app/modules/marvel_characters/domain/entities/characters_entity.dart';
 import 'package:marvel_app/app/modules/marvel_characters/domain/repositories/search_characters_repository.dart';
@@ -9,9 +10,13 @@ import 'package:mocktail/mocktail.dart';
 class SearchCharactersRepositoryMock extends Mock
     implements SearchCharactersRepository {}
 
+class LoggerMock extends Mock implements Logger {}
+
 void main() {
   final repository = SearchCharactersRepositoryMock();
-  final usecase = SearchCharactersUsecaseImpl(repository: repository);
+  final logger = LoggerMock();
+  final usecase =
+      SearchCharactersUsecaseImpl(repository: repository, logger: logger);
 
   test('should return a list of characters', () async {
     // Arrange
