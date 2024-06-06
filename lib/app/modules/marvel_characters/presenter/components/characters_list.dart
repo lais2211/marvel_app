@@ -36,14 +36,19 @@ class _CharactersListState extends State<CharactersList> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 20,
-                mainAxisExtent: 150,
+                mainAxisExtent: 180,
               ),
               itemCount: widget.charactersList.length,
               itemBuilder: (context, index) {
                 final actualCharacter = widget.charactersList[index];
-                return CharacterCard(
-                  imageUrl: actualCharacter.thumbnail,
-                  name: actualCharacter.name,
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: CharacterCard(
+                    imageUrl: actualCharacter.thumbnail,
+                    name: actualCharacter.name,
+                    imageFlex: 5,
+                    textFlex: 3,
+                  ),
                 );
               },
             ),

@@ -1,10 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class CharacterCard extends StatelessWidget {
+class CharacterCard extends StatefulWidget {
   final String imageUrl;
   final String name;
-  const CharacterCard({super.key, required this.imageUrl, required this.name});
+  int imageFlex;
+  int textFlex;
 
+  CharacterCard({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+    required this.imageFlex,
+    required this.textFlex,
+  });
+
+  @override
+  State<CharacterCard> createState() => _CharacterCardState();
+}
+
+class _CharacterCardState extends State<CharacterCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,9 +31,10 @@ class CharacterCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
-            flex: 5,
-            child: Image.network(
-              imageUrl,
+            flex: widget.imageFlex,
+            child: CachedNetworkImage(
+              imageUrl: widget.imageUrl,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           Container(
@@ -27,11 +43,11 @@ class CharacterCard extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
           ),
           Flexible(
-            flex: 2,
+            flex: widget.textFlex,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                name,
+                widget.name,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
