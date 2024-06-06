@@ -5,11 +5,10 @@ import '../../domain/entities/characters_entity.dart';
 
 class CharactersList extends StatefulWidget {
   final List<CharactersEntity> charactersList;
-  final ScrollController scrollController;
+  final bool isLoading;
+
   const CharactersList(
-      {super.key,
-      required this.charactersList,
-      required this.scrollController});
+      {super.key, required this.charactersList, required this.isLoading});
 
   @override
   _CharactersListState createState() => _CharactersListState();
@@ -18,42 +17,40 @@ class CharactersList extends StatefulWidget {
 class _CharactersListState extends State<CharactersList> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              'lib/assets/images/background1.png',
-              fit: BoxFit.cover,
+    return Observer(builder: (context) {
+      return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background3.jpg'),
+            repeat: ImageRepeat.repeat,
+          ),
+        ),
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          children: [
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 40,
+                mainAxisSpacing: 20,
+                mainAxisExtent: 150,
+              ),
+              itemCount: widget.charactersList.length,
+              itemBuilder: (context, index) {
+                final actualCharacter = widget.charactersList[index];
+                return CharacterCard(
+                  imageUrl: actualCharacter.thumbnail,
+                  name: actualCharacter.name,
+                );
+              },
             ),
-          ),
-          Positioned(
-            child: Observer(builder: (context) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: GridView.builder(
-                  controller: widget.scrollController,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 30,
-                      mainAxisSpacing: 30,
-                      childAspectRatio: 2 / 3),
-                  itemCount: widget.charactersList.length,
-                  itemBuilder: (context, index) {
-                    final actualCharacter = widget.charactersList[index];
-                    return CharacterCard(
-                      imageUrl: actualCharacter.thumbnail,
-                      name: actualCharacter.name,
-                    );
-                  },
-                ),
-              );
-            }),
-          ),
-        ],
-      ),
-    );
+            if (widget.isLoading) ...[const CircularProgressIndicator()]
+          ],
+        ),
+      );
+    });
   }
 }

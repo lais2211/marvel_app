@@ -17,7 +17,9 @@ class CharacterCard extends StatelessWidget {
         children: [
           Flexible(
             flex: 5,
-            child: Image.network(imageUrl),
+            child: Image.network(
+              imageUrl,
+            ),
           ),
           Container(
             height: 5,

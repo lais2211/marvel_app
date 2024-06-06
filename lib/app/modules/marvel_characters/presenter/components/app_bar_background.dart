@@ -12,38 +12,17 @@ class AppBarBackground extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'lib/assets/images/background1.png',
+              'assets/images/background1.png',
               fit: BoxFit.fill,
             ),
           ),
           Positioned(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.menu,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Image.asset(
-                    'lib/assets/images/logo.png',
-                    width: 100,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+            child: SizedBox(
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 100,
+                ),
               ),
             ),
           ),
@@ -52,7 +31,7 @@ class AppBarBackground extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 100,
+                  height: 120,
                 ),
                 Text(
                   title,
