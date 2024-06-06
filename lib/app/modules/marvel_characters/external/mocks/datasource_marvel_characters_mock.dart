@@ -1,4 +1,4 @@
-class MockConfigEnv {
+class DatasourceMarvelCharactersMock {
   static Map<String, Object> marvelCharactersResult = {
     "code": 200,
     "status": "Ok",
