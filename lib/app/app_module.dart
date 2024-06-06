@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/core/config/register_dio.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/controllers/home_page_controller.dart';
+import 'package:marvel_app/app/modules/marvel_characters/presenter/pages/splash_page.dart';
 
 import 'modules/marvel_characters/domain/repositories/search_characters_repository.dart';
 import 'modules/marvel_characters/domain/usecases/search_characters_usecase.dart';
@@ -16,11 +17,12 @@ class AppModule extends Module {
     i.add<SearchCharactersDatasource>(MarvelCharactersDatasourceImpl.new);
     i.add<SearchCharactersRepository>(SearchCharactersRepositoryImpl.new);
     i.add<SearchCharactersUsecase>(SearchCharactersUsecaseImpl.new);
-    i.add<HomePageController>(HomePageController.new);
+    i.addSingleton<HomePageController>(HomePageController.new);
   }
 
   @override
   void routes(r) {
-    r.child('/', child: (context) => const HomePage());
+    r.child('/', child: (context) => const SplashPage());
+    r.child('/home', child: (context) => const HomePage());
   }
 }
