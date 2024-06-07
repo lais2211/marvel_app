@@ -36,11 +36,11 @@ class _ErrorPageState extends State<ErrorPage> {
             Text(
               text.ops,
               style: const TextStyle(
-                fontSize: 30,
+                fontSize: 25,
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             Text(
               text.tryAgain,
