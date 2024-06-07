@@ -47,6 +47,7 @@ dependencies:
   logger: ^2.3.0
   cached_network_image: ^3.3.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,7 +70,6 @@ flutter:
     - assets/images/background1.png
     - assets/images/background2.png
     - assets/images/background3.jpg
-    - assets/images/logo.png
     - assets/images/nametag.png
     - assets/images/splashPage.jpg
   # The following line ensures that the Material Icons font is

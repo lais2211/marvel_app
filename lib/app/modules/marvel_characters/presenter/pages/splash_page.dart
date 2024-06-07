@@ -14,18 +14,20 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   HomePageController controller = Modular.get();
   Logger logger = Modular.get();
+  final int comicId = 10583;
+  final int offset = 5;
 
   @override
   void initState() {
     super.initState();
     logger.i('Splash Page foi iniciada.');
-    controller.getCharactersByComicId(10583, 5);
+    controller.getCharactersByComicId(comicId, offset);
     controller.getCharacters(0);
     _navigateToNextPage();
   }
 
   void _navigateToNextPage() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacementNamed(context, '/home');
     });
   }

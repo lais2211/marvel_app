@@ -41,13 +41,19 @@ class _CharactersListState extends State<CharactersList> {
               itemCount: widget.charactersList.length,
               itemBuilder: (context, index) {
                 final actualCharacter = widget.charactersList[index];
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: CharacterCard(
-                    imageUrl: actualCharacter.thumbnail,
-                    name: actualCharacter.name,
-                    imageFlex: 5,
-                    textFlex: 3,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/description',
+                        arguments: actualCharacter);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: CharacterCard(
+                      imageUrl: actualCharacter.thumbnail,
+                      name: actualCharacter.name,
+                      imageFlex: 5,
+                      textFlex: 3,
+                    ),
                   ),
                 );
               },
