@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/core/config/register_dio.dart';
 import 'package:marvel_app/app/core/config/register_log.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/controllers/home_page_controller.dart';
+import 'package:marvel_app/app/modules/marvel_characters/presenter/pages/error_page.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/pages/splash_page.dart';
 import 'modules/marvel_characters/domain/repositories/search_characters_repository.dart';
 import 'modules/marvel_characters/domain/usecases/search_characters_usecase.dart';
@@ -28,5 +29,6 @@ class AppModule extends Module {
     r.child('/home', child: (context) => const HomePage());
     r.child('/description',
         child: (context) => DescriptionPage(characterIndex: r.args.data));
+    r.child('/error', child: (context) => const ErrorPage());
   }
 }
