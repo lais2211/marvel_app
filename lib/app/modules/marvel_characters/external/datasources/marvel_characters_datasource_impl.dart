@@ -14,7 +14,7 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
 
   @override
   Future<List<ResultCharactersModel>> getCharacters(
-      {int? comicId, int? offset}) async {
+      {int? comicId, int? offset, int? limit}) async {
     try {
       final queryParams = {
         'apikey': ConfigEnv.apiKey,
@@ -27,6 +27,9 @@ class MarvelCharactersDatasourceImpl implements SearchCharactersDatasource {
       }
       if (offset != null) {
         queryParams['offset'] = offset;
+      }
+      if (limit != null) {
+        queryParams['limit'] = limit;
       }
 
       final response = await dio.get(

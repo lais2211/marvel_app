@@ -6,7 +6,7 @@ import 'package:marvel_app/app/modules/marvel_characters/domain/repositories/sea
 
 abstract class SearchCharactersUsecase {
   Future<Either<FailureSearch, List<CharactersEntity>>> call(
-      {int? comicId, int? offset});
+      {int? comicId, int? offset, int? limit});
 }
 
 class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
@@ -17,10 +17,11 @@ class SearchCharactersUsecaseImpl implements SearchCharactersUsecase {
 
   @override
   Future<Either<FailureSearch, List<CharactersEntity>>> call(
-      {int? comicId, int? offset}) async {
+      {int? comicId, int? offset, int? limit}) async {
     logger.d('Inicio do usecase na domain.');
     try {
-      return await repository.search(comicId: comicId, offset: offset);
+      return await repository.search(
+          comicId: comicId, offset: offset, limit: limit);
     } on Exception {
       return Left(InvalidResponseFailure());
     }

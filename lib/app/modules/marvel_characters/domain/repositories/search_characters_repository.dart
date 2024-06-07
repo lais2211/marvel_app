@@ -4,5 +4,5 @@ import 'package:marvel_app/app/modules/marvel_characters/domain/entities/charact
 
 abstract class SearchCharactersRepository {
   Future<Either<FailureSearch, List<CharactersEntity>>> search(
-      {int? comicId, int? offset});
+      {int? comicId, int? offset, int? limit});
 }
