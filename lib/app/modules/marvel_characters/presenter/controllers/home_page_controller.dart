@@ -3,6 +3,7 @@ import 'package:logger/logger.dart';
 import 'package:marvel_app/app/modules/marvel_characters/domain/entities/characters_entity.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../core/config/widget_status.dart';
 import '../../domain/usecases/search_characters_usecase.dart';
 part 'home_page_controller.g.dart';
 
@@ -15,7 +16,7 @@ abstract class _HomePageControllerBase with Store {
   _HomePageControllerBase(this.usecase);
 
   @observable
-  bool isLoading = false;
+  WidgetStatus isLoading = WidgetStatus.ready;
 
   @observable
   ObservableList<CharactersEntity> charactersList =
@@ -25,21 +26,27 @@ abstract class _HomePageControllerBase with Store {
   ObservableList<CharactersEntity> charactersListScroll =
       ObservableList<CharactersEntity>();
 
+  @observable
+  WidgetStatus? appStatus;
+
   int offset = 20;
 
   @action
-  Future<void> getCharactersByComicId(int comicId, int offset) async {
-    var characters = await usecase(comicId: comicId, offset: offset);
+  Future<void> getCharactersByComicId(
+      int comicId, int offset, int limit) async {
+    var characters =
+        await usecase(comicId: comicId, offset: offset, limit: limit);
     logger.d('Entrou na função getCharactersByComicId');
 
     characters.fold(
       (left) {
         logger.d('Entrou no left (Failure).');
+        appStatus = WidgetStatus.error;
       },
       (right) {
         logger.d('Entrou no right (Sucess).');
         charactersList.addAll(right);
-        charactersList = ObservableList.of(charactersList);
+        return charactersList = ObservableList.of(charactersList);
       },
     );
   }
@@ -53,6 +60,7 @@ abstract class _HomePageControllerBase with Store {
     characters.fold(
       (left) {
         logger.d('Entrou no left (Failure).');
+        appStatus = WidgetStatus.error;
       },
       (right) {
         logger.d('Entrou no right (Sucess).');
@@ -65,8 +73,8 @@ abstract class _HomePageControllerBase with Store {
   @action
   Future<void> loadCharacters(int offset) async {
     logger.d('Entrou na função loadCharacters');
-    isLoading = true;
+    isLoading = WidgetStatus.loading;
     await getCharacters(offset);
-    isLoading = false;
+    isLoading = WidgetStatus.ready;
   }
 }
