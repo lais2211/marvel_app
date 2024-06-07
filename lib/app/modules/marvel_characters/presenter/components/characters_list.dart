@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:marvel_app/app/core/config/widget_status.dart';
 import 'package:marvel_app/app/modules/marvel_characters/presenter/components/character_card.dart';
 import '../../domain/entities/characters_entity.dart';
 
 class CharactersList extends StatefulWidget {
   final List<CharactersEntity> charactersList;
-  final bool isLoading;
+  final WidgetStatus isLoading;
 
   const CharactersList(
       {super.key, required this.charactersList, required this.isLoading});
@@ -58,7 +59,9 @@ class _CharactersListState extends State<CharactersList> {
                 );
               },
             ),
-            if (widget.isLoading) ...[const CircularProgressIndicator()]
+            if (widget.isLoading == WidgetStatus.loading) ...[
+              const CircularProgressIndicator()
+            ]
           ],
         ),
       );

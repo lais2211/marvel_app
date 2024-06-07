@@ -4,19 +4,19 @@ Este é um aplicativo Flutter que exibe uma lista de personagens da Marvel, recu
 
 
 ## Índice
-- [Sobre](#sobre)
+- [Detalhes](#detalhes)
 - [Telas](#telas)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Como Executar](#como-executar)
 
 
-## Sobre
+## Detalhes
 
 O projeto foi desenvolvido utilizando clean architecture e modularização, boas práticas como componentização de widgets e testes unitários. Além disso, foram realizados testes de responsividade em dispositivos Android e iOS.
 
 ## Telas
 
-Splash Page
+**Splash Page**
 
 O acesso ao aplicativo começa com uma Splash Page temática. Essa escolha permite que as chamadas de inicialização sejam carregadas "escondidas" do usuário, proporcionando uma experiência mais polida ao uso do aplicativo.
 
@@ -26,7 +26,7 @@ Obs.: Imagens capturadas de um celular samsung.
 ![](/assets/prints/splash_page_s22_real.jpg)
 
 
-Home Page
+**Home Page**
 
 Na Home Page, há um carrossel automático que exibe 5 personagens selecionados com base em um ID de quadrinho e um deslocamento (offset), a fim de mostrar personagens mais conhecidos do público geral. Abaixo do carrossel, há um scroll infinito que exibe todos os personagens da Marvel. Cada cartão de personagem é clicável, levando o usuário à página de descrição do personagem selecionado.
 
@@ -39,7 +39,7 @@ Obs.: Imagens capturadas de um celular samsung.
 ![](/assets/prints/home_page_s22_real_2.jpg)
 
 
-Description Page
+**Description Page**
 
 Ao clicar no cartão de um personagem, o usuário é direcionado à página de descrição, que exibe a imagem, o nome e a descrição do personagem selecionado.
 Essa página fornece mais detalhes sobre o personagem, aprofundando a experiência do usuário.
@@ -51,6 +51,15 @@ Obs.: Imagens capturadas de um celular samsung.
 ![](/assets/prints/description_page_s22_real.jpg)
 
 ![](/assets/prints/description_page_s22_real_2.jpg)
+
+**Error Page**
+
+Quando se tem um retorno de erro da api, é retornado uma pagina de erro aonde é informado ao usuário sobre o problema tecnico e com um botão para saida do app, assim evitando o acesso a pagina da home sem as informações de retorno devido a algum problema na chamada ou na api em questão.
+
+Obs.: Imagens capturadas de um celular samsung.
+
+![](/assets/prints/error_page_s22_real.jpg)
+
 
 
 ## Tecnologias Utilizadas

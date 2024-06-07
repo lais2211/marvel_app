@@ -2,5 +2,5 @@ import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_cha
 
 abstract class SearchCharactersDatasource {
   Future<List<ResultCharactersModel>> getCharacters(
-      {int? comicId, int? offset});
+      {int? comicId, int? offset, int? limit});
 }

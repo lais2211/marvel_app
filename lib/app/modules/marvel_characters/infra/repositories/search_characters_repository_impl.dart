@@ -17,11 +17,11 @@ class SearchCharactersRepositoryImpl implements SearchCharactersRepository {
 
   @override
   Future<Either<FailureSearch, List<CharactersEntity>>> search(
-      {int? comicId, int? offset}) async {
+      {int? comicId, int? offset, int? limit}) async {
     logger.d('Inicio do repository na infra.');
     try {
-      final result =
-          await datasource.getCharacters(comicId: comicId, offset: offset);
+      final result = await datasource.getCharacters(
+          comicId: comicId, offset: offset, limit: limit);
       return Right(result);
     } on Exception {
       return Left(DataSourceFailure());
