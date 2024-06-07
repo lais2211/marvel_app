@@ -22,7 +22,9 @@ O acesso ao aplicativo começa com uma Splash Page temática. Essa escolha permi
 
 Obs.: Imagens capturadas de um celular samsung.
 
-<img src="/assets/prints/splash_page_s22_real.jpg">
+
+![](/assets/prints/splash_page_s22_real.jpg)
+
 
 Home Page
 
@@ -32,10 +34,9 @@ A escolha do carrossel automático adiciona uma sensação de movimento ao aplic
 
 Obs.: Imagens capturadas de um celular samsung.
 
+![](/assets/prints/home_page_s22_real.jpg)
 
-<img src="/assets/prints/home_page_s22_real.jpg">
-
-<img src="/assets/prints/home_page_s22_real_2.jpg">
+![](/assets/prints/home_page_s22_real_2.jpg)
 
 
 Description Page
@@ -47,10 +48,9 @@ Observação: Nem todos os personagens retornam uma descrição na API, então f
 
 Obs.: Imagens capturadas de um celular samsung.
 
+![](/assets/prints/description_page_s22_real.jpg)
 
-<img src="/assets/prints/description_page_s22_real.jpg">
-
-<img src="/assets/prints/description_page_s22_real_2.jpg">
+![](/assets/prints/description_page_s22_real_2.jpg)
 
 
 ## Tecnologias Utilizadas
