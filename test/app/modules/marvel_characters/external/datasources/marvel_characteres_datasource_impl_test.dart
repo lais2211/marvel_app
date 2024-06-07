@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 import 'package:marvel_app/app/core/config/config_env.dart';
 import 'package:marvel_app/app/core/errors/errors.dart';
-import 'package:marvel_app/app/modules/marvel_characters/external/mocks/datasource_marvel_characters_mock.dart';
+import '../../mocks/datasource_marvel_characters_mock.dart';
 import 'package:marvel_app/app/modules/marvel_characters/external/datasources/marvel_characters_datasource_impl.dart';
 import 'package:marvel_app/app/modules/marvel_characters/infra/models/result_characters_model.dart';
 import 'package:mocktail/mocktail.dart';

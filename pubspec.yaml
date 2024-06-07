@@ -69,8 +69,8 @@ flutter:
     - .env
     - assets/images/background1.png
     - assets/images/background2.png
+    - assets/images/logo.png
     - assets/images/background3.jpg
-    - assets/images/nametag.png
     - assets/images/splashPage.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
