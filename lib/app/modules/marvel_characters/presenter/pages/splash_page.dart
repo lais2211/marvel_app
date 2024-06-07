@@ -23,17 +23,20 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     logger.i('Splash Page foi iniciada.');
-    controller.getCharactersByComicId(comicId, offset, limit);
-    controller.getCharacters(0);
+
+    goToNavigation();
+  }
+
+  Future<void> goToNavigation() async {
+    await controller.getCharactersByComicId(comicId, offset, limit);
+    await controller.getCharacters(0);
     _navigateToNextPage();
   }
 
   void _navigateToNextPage() {
-    Future.delayed(const Duration(seconds: 4), () {
-      controller.appStatus == WidgetStatus.error
-          ? Navigator.pushReplacementNamed(context, '/error')
-          : Navigator.pushReplacementNamed(context, '/home');
-    });
+    controller.appStatus == WidgetStatus.error
+        ? Navigator.pushReplacementNamed(context, '/error')
+        : Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
